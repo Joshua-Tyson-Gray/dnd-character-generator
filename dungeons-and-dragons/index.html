@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./script/controller.js"></script>
+    <script src="./script/model.js"></script>
+    <title>DnD Character Generator</title>
+</head>
+<body>
+    <div id="siteHeader">
+        <div id="header-image-wrapper"><img src="./img/dnd-main.png" alt="Dungeons and Dragons"></div>
+        <h1 id="site-title">Character Generator</h1>
+    </div>
+
+    <div id="charGenCharList">
+        <h2>Character Roster</h2>
+        <button type="button" id="newCharBtn">New</button>
+        <div id="characterList">
+            <div class="characterRecord characterRecordHead">
+                <p class="id-col">ID</p>
+                <p class="name-col">Name</p>
+                <p class="race-col">Race</p>
+                <p class="class-col">Class</p>
+                <p class="gender-col">Gender</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="charGenEditArea">
+        <h2>New Character</h2>
+        <form name="characterGen">
+            <div id="char-gen-form-fields">
+                <div id="form-col-one">
+                    <div class="input-row">
+                        <label for="characterName">Name</label>
+                        <input id="nameInput" name="characterName" type="text">
+                        <div class="error" id="nameError">&nbsp;</div>
+                    </div>
+                    <div class="input-row">
+                        <div id="genderInputModule">
+                            <label for="genderVal">Gender</label>
+                            <div id="genderInputOptions">
+                                <label class="radioLabel"><input name="genderVal" type="radio" value="male" id="maleInput">Male</label>
+                                <label class="radioLabel"><input name="genderVal" type="radio" value="female" id="femaleInput">Female</label>
+                            </div>
+                        </div>
+                        <div class="error" id="genderError">&nbsp;</div>
+                    </div>
+                    <div class="input-row">
+                        <label><input name="isRightHandedVal" id="isRightHandedInput" type="checkbox">Is Right Handed</label>
+                        <div>&nbsp;</div>
+                    </div>
+                    <div class="input-row">
+                        <label for="raceVal">Race</label>
+                        <select name="raceVal" id="raceInput">
+                            <option selected disabled></option>
+                            <option value="Dragonborn">Dragonborn</option>
+                            <option value="Dwarf">Dwarf</option>
+                            <option value="Elf">Elf</option>
+                            <option value="Gnome">Gnome</option>
+                            <option value="Half-Elf">Half-Elf</option>
+                            <option value="Halfling">Halfling</option>
+                            <option value="Half-Orc">Half-Orc</option>
+                            <option value="Human">Human</option>
+                            <option value="Tiefling">Tiefling</option>
+                            <option value="Aasimar">Aasimar</option>
+                            <option value="Wood-Elf">Wood-Elf</option>
+                            <option value="Gensai">Gensai</option>
+                        </select>
+                        <div class="error" id="raceError">&nbsp;</div>
+                    </div>
+                    <div class="input-row">
+                        <label for="classVal">Class</label>
+                        <select name="classVal" id="classInput">
+                            <option selected disabled></option>
+                            <option value="Barbarian">Barbarian</option>
+                            <option value="Bard">Bard</option>
+                            <option value="Cleric">Cleric</option>
+                            <option value="Druid">Druid</option>
+                            <option value="Fighter">Fighter</option>
+                            <option value="Monk">Monk</option>
+                            <option value="Palidin">Palidin</option>
+                            <option value="Ranger">Ranger</option>
+                            <option value="Rogue">Rogue</option>
+                            <option value="Sorcerer">Sorcerer</option>
+                            <option value="Warlock">Warlock</option>
+                            <option value="Wizard">Wizard</option>
+                        </select>
+                        <div class="error" id="classError">&nbsp;</div>
+                    </div>
+                </div>
+                <div id="form-col-two">
+                    <div class="input-row stat-row">
+                        <label for="strengthVal">Strength</label>
+                        <input id="strInput" name="strengthVal" type="text" class="int-input" readonly>
+                    </div>
+                    <div class="input-row stat-row">
+                        <label for="dexterityVal">Dexterity</label>
+                        <input id="dexInput" name="dexterityVal" type="text" class="int-input" readonly>
+                    </div>
+                    <div class="input-row stat-row">
+                        <label for="constitutionVal">Constitution</label>
+                        <input id="conInput" name="constitutionVal" type="text" class="int-input" readonly>
+                    </div>
+                    <div class="input-row stat-row">
+                        <label for="intelligenceVal">Intelligence</label>
+                        <input id="intInput" name="intelligenceVal" type="text" class="int-input" readonly>
+                    </div>
+                    <div class="input-row stat-row">
+                        <label for="wisdomVal">Wisdom</label>
+                        <input id="wisInput" name="wisdomVal" type="text" class="int-input" readonly>
+                    </div>
+                    <div class="input-row stat-row">
+                        <label for="charismaVal">Charisma</label>
+                        <input id="charInput" name="charismaVal" type="text" class="int-input" readonly>
+                    </div>
+                    <div class="input-row">
+                        <button type="button" id="rerollBtn">Reroll</button>
+                    </div>
+                </div>
+            </div>
+            <div class="input-row">
+                <button type="button" id="addBtn">Add</button>
+                <button type="button" id="backBtn">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        onPageLoad();
+    </script>
+</body>
+</html>

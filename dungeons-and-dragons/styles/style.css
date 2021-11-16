@@ -1,0 +1,159 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    text-align: center;
+    width: 60vw;
+    margin: auto;
+}
+label{
+    display: inline-block;
+    width: 200px;
+    font-size: 25px;
+}
+input[type="text"], select{
+    font-size: 25px;
+    width: 250px;
+}
+button{
+    font-size: 25px;
+}
+h1{
+    font-size: 40px;
+    font-weight: bold;
+}
+h2{
+    font-size: 28px;
+    font-weight: bold;
+    padding: 5px;
+    margin: 5px;
+}
+
+/*CHARACTER LIST STYLING*/
+#characterList{
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+.characterRecordHead > p{
+    font-weight: bold;
+}
+.characterRecord{
+    display: flex;
+    border-bottom-width: 2px;
+    border-bottom-color: lightGray;
+    border-bottom-style: solid;
+    justify-content: space-between;
+}
+.characterRecordHead{
+    border-bottom-width: 2px;
+    border-bottom-color: gray;
+    border-bottom-style: solid;
+}
+.characterRecord > p{
+    text-align: left;
+    padding: 10px;
+    margin: 10px;
+}
+p.gender-col{
+    width: 15%;
+}
+p.name-col, p.race-col, p.class-col{
+    width: 20%;
+}
+p.id-col{
+    width: 3%;
+}
+
+
+
+#char-gen-form-fields{
+    display: flex;
+    margin: 50px;
+    align-items: center;
+}
+#form-col-one{
+    text-align: left;
+    width: 50%;
+}
+#form-col-two{
+    border-left-style: solid;
+    border-left-color: lightGray;
+    border-left-width: 2px;
+    width: 50%;
+}
+#genderInputModule{
+    display: flex;
+    align-items: center;
+}
+#genderInputOptions{
+    display: flex;
+    flex-direction: column;
+}
+#isRightHandedInput{
+    text-align: right;
+}
+input.int-input{
+    width: 30px;
+    text-align: center;
+}
+.input-row{
+    margin: 10px;
+}
+.error{
+    color: red;
+}
+h1#site-title{
+    position: relative;
+    top:-80px;
+}
+#siteHeader{
+    position: relative;
+    top:-80px;
+    height: 350px;
+}
+#header-image-wrapper{
+    width: 100%;
+    text-align: center;
+}
+#newCharBtn{
+    background-color: rgb(11, 175, 60);
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    width: 78px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+button:hover{
+    cursor: pointer;
+}
+#rerollBtn{
+    background-color: rgb(33, 127, 235);
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+#addBtn{
+    background-color: rgb(11, 175, 60);
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+#backBtn{
+    background-color: red;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+
+}

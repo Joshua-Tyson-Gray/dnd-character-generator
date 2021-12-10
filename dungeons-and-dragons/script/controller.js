@@ -1,5 +1,6 @@
 function onPageLoad(){
     document.getElementById("charGenEditArea").toggleAttribute("hidden");
+    document.getElementById("updateBtn").toggleAttribute("hidden");
     document
         .getElementById("rerollBtn")
         .addEventListener("click", generateVals);
@@ -8,10 +9,77 @@ function onPageLoad(){
         .addEventListener("click", addCharacter);
     document
         .getElementById("newCharBtn")
-        .addEventListener("click", generateCharacter);
+        .addEventListener("click", onCreateBtnClicked);
     document
         .getElementById("backBtn")
-        .addEventListener("click", goBack);
+        .addEventListener("click", backToHome);
+    generateCharacterList();
+}
+
+function backToHome(){
+    document.forms["characterGen"].reset();
+    document.getElementById("charGenEditArea").toggleAttribute("hidden");
+    document.getElementById("charGenCharList").toggleAttribute("hidden");
+    document.getElementById("nameError").innerHTML = "&nbsp;";
+    document.getElementById("raceError").innerHTML = "&nbsp;";
+    document.getElementById("genderError").innerHTML = "&nbsp;";
+    document.getElementById("classError").innerHTML = "&nbsp;";
+}
+
+function onCreateBtnClicked(){
+    document.forms["characterGen"].reset();
+    generateVals();
+    document.querySelector("#charGenEditArea > h2").innerHTML = "New Character";
+    document.getElementById("addBtn").hidden = false; //.removeAttribute("hidden");
+    document.getElementById("updateBtn").hidden = true;//.setAttribute("hidden", true);
+    document.getElementById("rerollBtn").hidden = false;//.removeAttribute("hidden");
+    document.getElementById("maleInput").checked = false;//.removeAttribute("checked");
+    document.getElementById("femaleInput").checked = false;//.removeAttribute("checked");
+    document.getElementById("isRightHandedInput").checked = false;//.removeAttribute("checked");
+    document.getElementById("charGenEditArea").toggleAttribute("hidden");
+    document.getElementById("charGenCharList").toggleAttribute("hidden");
+}
+
+function generateCharacterList(){
+    let charList = document.getElementById("characterList");
+    charList.innerHTML = "";
+
+    let charRecHead = document.createElement("div");
+    charRecHead.classList.add("characterRecord");
+    charRecHead.classList.add("characterRecordHead");
+
+    let id = document.createElement("p");
+    id.classList.add("id-col");
+    id.innerHTML = "ID";
+    charRecHead.appendChild(id);
+
+    let name = document.createElement("p");
+    name.classList.add("name-col");
+    name.innerHTML = "Name";
+    charRecHead.appendChild(name);
+
+    let race = document.createElement("p");
+    race.classList.add("race-col");
+    race.innerHTML = "Race";
+    charRecHead.appendChild(race);
+
+    let charClass = document.createElement("p");
+    charClass.classList.add("class-col");
+    charClass.innerHTML = "Class";
+    charRecHead.appendChild(charClass);
+
+    let gender = document.createElement("p");
+    gender.classList.add("gender-col");
+    gender.innerHTML = "Gender";
+    charRecHead.appendChild(gender);
+
+    let action = document.createElement("p");
+    action.classList.add("action-col");
+    action.innerHTML ="Action";
+    charRecHead.appendChild(action);
+
+    charList.appendChild(charRecHead);
+    
     for(character of characterList){
         generateCharacterRecord(character);
     }
@@ -47,17 +115,92 @@ function generateCharacterRecord(character){
     genderTD.innerHTML = character.gender;
     record.appendChild(genderTD);
 
+    let editButton = document.createElement("button");
+    editButton.classList.add("editBtn");
+    editButton.innerHTML = "Edit";
+    editButton.addEventListener('click', function(){
+        onEditBtnClicked(character.id);
+    });
+    record.appendChild(editButton);
+
+    let deleteButton = document.createElement("button");
+    deleteButton.classList.add("deleteBtn");
+    deleteButton.innerHTML = "Delete";
+    deleteButton.addEventListener('click', function(){
+        deleteItem(character.id);
+        generateCharacterList();
+    });
+    record.appendChild(deleteButton);
+
+    let actionSec = document.createElement("div");
+    actionSec.classList.add("action-col");
+    actionSec.appendChild(editButton);
+    actionSec.appendChild(deleteButton);
+
+    record.appendChild(actionSec);
     list.appendChild(record);
 }
 
-function goBack(){
-    document.forms["characterGen"].reset();
-    document.getElementById("charGenEditArea").toggleAttribute("hidden");
-    document.getElementById("charGenCharList").toggleAttribute("hidden");
+function onEditBtnClicked(id){
+    let character = getItemById(id);
+    if(character == undefined){
+        console.log("Character not found.");
+        return;
+    }
     document.getElementById("nameError").innerHTML = "&nbsp;";
     document.getElementById("raceError").innerHTML = "&nbsp;";
     document.getElementById("genderError").innerHTML = "&nbsp;";
     document.getElementById("classError").innerHTML = "&nbsp;";
+    document.forms["characterGen"].reset();
+
+    document.querySelector("#charGenEditArea > h2").innerHTML = "Update Character";
+    document.getElementById("addBtn").hidden = true;
+    document.getElementById("updateBtn").hidden = false; //removeAttribute("hidden");
+    document.getElementById("rerollBtn").hidden = true;
+    
+    document.getElementById("nameInput").value = character.name;
+    document.getElementById("raceInput").value = character.race;
+    document.getElementById("classInput").value = character.charClass;
+    document.getElementById("isRightHandedInput").checked = character.isRightHanded; //setAttribute("checked", true);
+    if(character.gender == "Male"){
+        document.getElementById("maleInput").checked = true;
+    }else{
+        document.getElementById("femaleInput").checked = true;
+    }
+    document.getElementById("strInput").value = character.stats[0];
+    document.getElementById("dexInput").value = character.stats[1];
+    document.getElementById("conInput").value = character.stats[2];
+    document.getElementById("intInput").value = character.stats[3];
+    document.getElementById("wisInput").value = character.stats[4];
+    document.getElementById("charInput").value = character.stats[5];
+
+    document.getElementById("charGenEditArea").toggleAttribute("hidden");
+    document.getElementById("charGenCharList").toggleAttribute("hidden");
+    document.getElementById("updateBtn").onclick = function(){
+        onUpdateBtnClicked(character.id);
+    };
+}
+
+function onUpdateBtnClicked(id){
+    if(!isValidInput()){
+        return;
+    }
+    let character = updateItem(
+        id,
+        document.forms["characterGen"].nameInput.value,
+        document.forms["characterGen"].raceInput.value,
+        (document.forms["characterGen"].maleInput.checked ? "Male" : "Female"),
+        document.forms["characterGen"].classInput.value,
+        document.forms["characterGen"].isRightHandedInput.checked
+    );
+
+    if(!character){
+        console.log("Unable to update character");
+        return;
+    }
+
+    generateCharacterList();
+    backToHome();
 }
 
 function isValidInput(){
@@ -108,15 +251,7 @@ function addCharacter(){
             document.forms["characterGen"].charInput.value
         ]
     );
-    document.forms["characterGen"].reset();
-    document.getElementById("charGenEditArea").toggleAttribute("hidden");
-    document.getElementById("charGenCharList").toggleAttribute("hidden");
-}
-
-function generateCharacter(){
-    generateVals();
-    document.getElementById("charGenEditArea").toggleAttribute("hidden");
-    document.getElementById("charGenCharList").toggleAttribute("hidden");
+    backToHome();
 }
 
 function generateVals(){
@@ -141,7 +276,5 @@ function generateVals(){
 }
 
 function getRandomVal(){
-   //return (Math.floor(Math.random() * 6)) + (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1);
-   //return (Math.random() + Math.random() + Math.random() * 3 + 1) * 6 + 3;
    return Math.floor((Math.random() * 16) + 3);
 }

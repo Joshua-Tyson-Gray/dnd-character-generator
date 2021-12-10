@@ -29,6 +29,27 @@ function getAllCharacters(){
     return characterList;
 }
 
-function getCharacter(id){
+function getItemById(id){
     return characterList.find(character => character.id === id);
+}
+
+function updateItem(id, name, race, gender, charClass, isRightHanded){
+    let character = getItemById(id);
+    if(character == undefined){
+        return undefined;
+    }
+    character.name = name;
+    character.race = race;
+    character.gender = gender;
+    character.charClass = charClass;
+    character.isRightHanded = isRightHanded;
+    return character;
+}
+
+function deleteItem(id){
+    for(let index = 0; index < characterList.length; ++index){
+        if(characterList[index].id == id){
+            characterList.splice(index, 1);
+        }
+    }
 }

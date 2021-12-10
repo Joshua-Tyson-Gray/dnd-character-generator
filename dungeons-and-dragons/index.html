@@ -19,15 +19,7 @@
     <div id="charGenCharList">
         <h2>Character Roster</h2>
         <button type="button" id="newCharBtn">New</button>
-        <div id="characterList">
-            <div class="characterRecord characterRecordHead">
-                <p class="id-col">ID</p>
-                <p class="name-col">Name</p>
-                <p class="race-col">Race</p>
-                <p class="class-col">Class</p>
-                <p class="gender-col">Gender</p>
-            </div>
-        </div>
+        <div id="characterList"></div>
     </div>
 
     <div id="charGenEditArea">
@@ -69,7 +61,7 @@
                             <option value="Tiefling">Tiefling</option>
                             <option value="Aasimar">Aasimar</option>
                             <option value="Wood-Elf">Wood-Elf</option>
-                            <option value="Gensai">Gensai</option>
+                            <option value="Genasi">Genasi</option>
                         </select>
                         <div class="error" id="raceError">&nbsp;</div>
                     </div>
@@ -123,8 +115,9 @@
                     </div>
                 </div>
             </div>
-            <div class="input-row">
+            <div id="newCharControls" class="input-row">
                 <button type="button" id="addBtn">Add</button>
+                <button type="button" id="updateBtn">Update</button>
                 <button type="button" id="backBtn">Cancel</button>
             </div>
         </form>

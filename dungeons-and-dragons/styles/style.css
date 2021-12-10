@@ -64,6 +64,35 @@ p.name-col, p.race-col, p.class-col{
 p.id-col{
     width: 3%;
 }
+p.action-col{
+    min-width: 110px;
+}
+div.action-col{
+    display: flex;
+    min-width: 140px;
+}
+.editBtn{
+    background-color:rgb(33, 127, 235);
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    margin: 10px;
+    margin-right: 5px;
+}
+.deleteBtn{
+    background-color: red;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    margin: 10px;
+    margin-left: 5px;
+}
 
 
 
@@ -138,7 +167,7 @@ button:hover{
     font-weight: bold;
     color: white;
 }
-#addBtn{
+#addBtn, #updateBtn{
     background-color: rgb(11, 175, 60);
     border: none;
     padding: 8px;

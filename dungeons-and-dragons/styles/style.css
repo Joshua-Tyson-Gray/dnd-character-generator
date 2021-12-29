@@ -1,5 +1,6 @@
 *{
     font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 body{
     text-align: center;
@@ -30,46 +31,39 @@ h2{
 }
 
 /*CHARACTER LIST STYLING*/
-#characterList{
-    display: flex;
-    flex-direction: column;
-    margin: 15px;
+table{
+    margin: 15px auto;
 }
-.characterRecordHead > p{
+th{
     font-weight: bold;
+    text-align: left;
+    padding: 20px;
 }
-.characterRecord{
-    display: flex;
+td{
+    text-align: left;
+    padding: 0px 20px;
+}
+td.action-col{
+    padding: 0px 0px 0px 20px;
+}
+tr.characterRecord{
     border-bottom-width: 2px;
     border-bottom-color: lightGray;
     border-bottom-style: solid;
-    justify-content: space-between;
 }
-.characterRecordHead{
+th#id-col{
+    width: 3%;
+}
+th#name-col, th#race-col, th#class-col{
+    width: 20%
+}
+th#gender-col{
+    width: 15%;
+}
+#characterRecordHead{
     border-bottom-width: 2px;
     border-bottom-color: gray;
     border-bottom-style: solid;
-}
-.characterRecord > p{
-    text-align: left;
-    padding: 10px;
-    margin: 10px;
-}
-p.gender-col{
-    width: 15%;
-}
-p.name-col, p.race-col, p.class-col{
-    width: 20%;
-}
-p.id-col{
-    width: 3%;
-}
-p.action-col{
-    min-width: 110px;
-}
-div.action-col{
-    display: flex;
-    min-width: 140px;
 }
 .editBtn{
     background-color:rgb(33, 127, 235);
@@ -79,8 +73,7 @@ div.action-col{
     font-size: 15px;
     font-weight: bold;
     color: white;
-    margin: 10px;
-    margin-right: 5px;
+    margin: 10px 5px 10px 0px;
 }
 .deleteBtn{
     background-color: red;
@@ -123,7 +116,7 @@ div.action-col{
     text-align: right;
 }
 input.int-input{
-    width: 30px;
+    width: 45px;
     text-align: center;
 }
 .input-row{

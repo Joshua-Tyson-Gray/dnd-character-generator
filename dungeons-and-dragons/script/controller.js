@@ -43,43 +43,6 @@ function onCreateBtnClicked(){
 function generateCharacterList(){
     let charList = document.getElementById("characterList");
     charList.innerHTML = "";
-
-    let charRecHead = document.createElement("div");
-    charRecHead.classList.add("characterRecord");
-    charRecHead.classList.add("characterRecordHead");
-
-    let id = document.createElement("p");
-    id.classList.add("id-col");
-    id.innerHTML = "ID";
-    charRecHead.appendChild(id);
-
-    let name = document.createElement("p");
-    name.classList.add("name-col");
-    name.innerHTML = "Name";
-    charRecHead.appendChild(name);
-
-    let race = document.createElement("p");
-    race.classList.add("race-col");
-    race.innerHTML = "Race";
-    charRecHead.appendChild(race);
-
-    let charClass = document.createElement("p");
-    charClass.classList.add("class-col");
-    charClass.innerHTML = "Class";
-    charRecHead.appendChild(charClass);
-
-    let gender = document.createElement("p");
-    gender.classList.add("gender-col");
-    gender.innerHTML = "Gender";
-    charRecHead.appendChild(gender);
-
-    let action = document.createElement("p");
-    action.classList.add("action-col");
-    action.innerHTML ="Action";
-    charRecHead.appendChild(action);
-
-    charList.appendChild(charRecHead);
-    
     for(character of characterList){
         generateCharacterRecord(character);
     }
@@ -87,30 +50,30 @@ function generateCharacterList(){
 
 function generateCharacterRecord(character){
     let list = document.getElementById("characterList");
-    let record = document.createElement("div");
+    let record = document.createElement("tr");
     record.classList.add("characterRecord");
 
-    let idTD = document.createElement("p");
-    idTD.classList.add("id-col");
+    let idTD = document.createElement("td");
+    //idTD.classList.add("id-col");
     idTD.innerHTML = character.id;
     record.appendChild(idTD);
 
-    let nameTD = document.createElement("p");
+    let nameTD = document.createElement("td");
     nameTD.classList.add("name-col");
     nameTD.innerHTML = character.name;
     record.appendChild(nameTD);
 
-    let raceTD = document.createElement("p");
+    let raceTD = document.createElement("td");
     raceTD.classList.add("race-col");
     raceTD.innerHTML = character.race;
     record.appendChild(raceTD);
 
-    let classTD = document.createElement("p");
+    let classTD = document.createElement("td");
     classTD.classList.add("class-col");
     classTD.innerHTML = character.charClass;
     record.appendChild(classTD);
 
-    let genderTD = document.createElement("p");
+    let genderTD = document.createElement("td");
     genderTD.classList.add("gender-col");
     genderTD.innerHTML = character.gender;
     record.appendChild(genderTD);
@@ -132,12 +95,12 @@ function generateCharacterRecord(character){
     });
     record.appendChild(deleteButton);
 
-    let actionSec = document.createElement("div");
+    let actionSec = document.createElement("td");
     actionSec.classList.add("action-col");
     actionSec.appendChild(editButton);
     actionSec.appendChild(deleteButton);
-
     record.appendChild(actionSec);
+
     list.appendChild(record);
 }
 

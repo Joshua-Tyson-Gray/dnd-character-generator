@@ -99,10 +99,14 @@ th#gender-col{
     width: 50%;
 }
 #form-col-two{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border-left-style: solid;
     border-left-color: lightGray;
     border-left-width: 2px;
     width: 50%;
+
 }
 #genderInputModule{
     display: flex;
@@ -111,6 +115,9 @@ th#gender-col{
 #genderInputOptions{
     display: flex;
     flex-direction: column;
+}
+#genderInputOptions, #genderLabel{
+    width: 50%;
 }
 #isRightHandedInput{
     text-align: right;
@@ -177,5 +184,4 @@ button:hover{
     font-size: 20px;
     font-weight: bold;
     color: white;
-
 }

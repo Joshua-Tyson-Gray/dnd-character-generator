@@ -241,3 +241,12 @@ function generateVals(){
 function getRandomVal(){
    return Math.floor((Math.random() * 16) + 3);
 }
+
+function printArea(printId){
+    let generator = window.open();
+    let text = document.getElementById(printId);
+    generator.document.write(text.innerHTML.replace());
+    generator.document.close();
+    generator.print();
+    generator.close();
+}
